@@ -1,14 +1,19 @@
 import React from 'react';
+//import { useContext } from 'react';
+
 
 const Cart = (props) => {
     const cart=props.cart;
     
+   // const user=useContext(UserContext)
+    //console.log(user)
+    const {key}=props.cart;
     //const total=cart.reduce((total,prd)=>total+prd.price,0);
     //othoba for loop diye
     let total=0;
     for(let i=0;i<cart.length;i++){
         const product=cart[i];
-        total=total+product.price;
+        total=total+product.price*product.quantity;
     }
 
     //
@@ -38,6 +43,11 @@ const Cart = (props) => {
             <p><small>Shipping Cost:{shipping}</small></p>
             <p><small>Tax+vat:{tax}</small></p>
             <p>Total Price:{grandTotal}</p>
+            {
+                props.children
+            }
+            <p>{}</p>
+
         </div>
     );
 };
